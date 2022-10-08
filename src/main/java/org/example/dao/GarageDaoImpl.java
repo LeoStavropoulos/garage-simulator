@@ -49,4 +49,8 @@ public class GarageDaoImpl implements IGarageDao{
     public Integer getVacantSpotsNumber() {
         return GARAGE_CAPACITY - garage.size();
     }
+
+    public Map<String, Vehicle> getGarage() {
+        return garage;
+    }
 }
