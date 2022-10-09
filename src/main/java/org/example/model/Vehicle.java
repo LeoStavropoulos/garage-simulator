@@ -1,6 +1,7 @@
 package org.example.model;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public abstract class Vehicle extends AbstractEntity{
 
@@ -61,5 +62,18 @@ public abstract class Vehicle extends AbstractEntity{
 
     public void setEntranceDateTime(LocalDateTime entranceDateTime) {
         this.entranceDateTime = entranceDateTime;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Vehicle vehicle = (Vehicle) o;
+        return getPlateNum().equals(vehicle.getPlateNum());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getPlateNum());
     }
 }
