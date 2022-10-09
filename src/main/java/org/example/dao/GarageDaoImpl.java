@@ -1,9 +1,12 @@
 package org.example.dao;
 
+import org.example.model.Driver;
 import org.example.model.Vehicle;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class GarageDaoImpl implements IGarageDao{
 
@@ -11,6 +14,8 @@ public class GarageDaoImpl implements IGarageDao{
     private static final Integer MAP_SIZE = (int) Math.round(GARAGE_CAPACITY * 0.75);
     private static final GarageDaoImpl dao = new GarageDaoImpl();
     private static final Map<String, Vehicle> garage = new HashMap<>(MAP_SIZE);
+
+    private static final Set<Driver> drivers = new HashSet<>();
 
     private Double totalMoney = 0.0;
 
@@ -36,6 +41,11 @@ public class GarageDaoImpl implements IGarageDao{
     }
 
     @Override
+    public Map<String, Vehicle> getGarage() {
+        return garage;
+    }
+
+    @Override
     public void addMoney(Double amount) {
         totalMoney += amount;
     }
@@ -50,7 +60,18 @@ public class GarageDaoImpl implements IGarageDao{
         return GARAGE_CAPACITY - garage.size();
     }
 
-    public Map<String, Vehicle> getGarage() {
-        return garage;
+    @Override
+    public void addDriver(Driver driver) {
+        drivers.add(driver);
+    }
+
+    @Override
+    public void removeDriver(Driver driver) {
+        drivers.remove(driver);
+    }
+
+    @Override
+    public Set<Driver> getDrivers() {
+        return drivers;
     }
 }

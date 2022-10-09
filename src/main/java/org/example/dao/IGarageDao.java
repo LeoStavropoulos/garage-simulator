@@ -1,6 +1,10 @@
 package org.example.dao;
 
+import org.example.model.Driver;
 import org.example.model.Vehicle;
+
+import java.util.Map;
+import java.util.Set;
 
 public interface IGarageDao {
 
@@ -10,9 +14,17 @@ public interface IGarageDao {
 
     Vehicle findVehicleByPlateNumber(String plateNum);
 
+    public Map<String, Vehicle> getGarage();
+
     void addMoney(Double amount);
 
     Double getTotalMoneyEarned();
 
     Integer getVacantSpotsNumber();
+
+    void addDriver (Driver driver);
+
+    void removeDriver (Driver driver);
+
+    Set<Driver> getDrivers();
 }

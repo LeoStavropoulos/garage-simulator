@@ -1,5 +1,7 @@
 package org.example.model;
 
+import java.util.Objects;
+
 public abstract class Person extends AbstractEntity{
     private String firstName;
     private String lastName;
@@ -24,5 +26,18 @@ public abstract class Person extends AbstractEntity{
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return getFirstName().equals(person.getFirstName()) && getLastName().equals(person.getLastName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getFirstName(), getLastName());
     }
 }
