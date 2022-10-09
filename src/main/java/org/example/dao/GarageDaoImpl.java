@@ -1,5 +1,6 @@
 package org.example.dao;
 
+import org.example.exception.GarageFullException;
 import org.example.model.Driver;
 import org.example.model.Vehicle;
 
@@ -65,7 +66,10 @@ public class GarageDaoImpl implements IGarageDao{
     }
 
     @Override
-    public Integer getVacantSpotsNumber() {
+    public Integer getVacantSpotsNumber() throws GarageFullException {
+        if (garage.size() == GARAGE_CAPACITY) {
+            throw new GarageFullException();
+        }
         return GARAGE_CAPACITY - garage.size();
     }
 

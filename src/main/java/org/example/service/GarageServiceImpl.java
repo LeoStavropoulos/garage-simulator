@@ -23,9 +23,9 @@ public class GarageServiceImpl implements IGarageService{
 
         if (dao.findVehicleByPlateNumber(vehicleDto.getPlateNum()) != null) throw new PlateNumAlreadyExistsException(vehicleDto.getPlateNum());
 
-        if (vehicleDto.getClass().isInstance(CarDto.class)) {
+        if (vehicleDto instanceof CarDto) {
             vehicleDto.setCharge(CAR_CHARGE);
-        } else if (vehicleDto.getClass().isInstance(MotorcycleDto.class)) {
+        } else if (vehicleDto instanceof MotorcycleDto) {
             vehicleDto.setCharge(MOTO_CHARGE);
         }
 
@@ -57,20 +57,20 @@ public class GarageServiceImpl implements IGarageService{
             price = time * vehicle.getCharge();
         }
 
-        dao.removeVehicle(plateNum);
-
-        if (!dao.findIfDriverExists(driver)) {
+        if (Boolean.FALSE.equals(dao.findIfDriverExists(driver))) {
             dao.removeDriver(dao.findVehicleByPlateNumber(plateNum).getDriver());
         } else {
             price *= 0.7;
         }
+
+        dao.removeVehicle(plateNum);
 
         dao.addMoney(price);
         return price;
     }
 
     @Override
-    public int getEmptySpotsNumber() {
+    public int getEmptySpotsNumber() throws GarageFullException {
         return dao.getVacantSpotsNumber();
     }
 

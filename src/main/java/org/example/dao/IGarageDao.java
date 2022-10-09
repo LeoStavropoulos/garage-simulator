@@ -1,5 +1,6 @@
 package org.example.dao;
 
+import org.example.exception.GarageFullException;
 import org.example.model.Driver;
 import org.example.model.Vehicle;
 
@@ -22,7 +23,7 @@ public interface IGarageDao {
 
     Double getTotalMoneyEarned();
 
-    Integer getVacantSpotsNumber();
+    Integer getVacantSpotsNumber() throws GarageFullException;
 
     void addDriver (Driver driver);
 

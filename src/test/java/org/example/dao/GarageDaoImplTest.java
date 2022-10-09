@@ -1,6 +1,5 @@
-package test.org.example.dao; 
+package org.example.dao;
 
-import org.example.dao.GarageDaoImpl;
 import org.example.model.*;
 import org.junit.jupiter.api.*;
 
@@ -23,15 +22,15 @@ public class GarageDaoImplTest {
     */
     @Test
     public void testInsertVehicle()  {
-        Driver driver1 = new Driver("Driver", "One", 1L);
-        Driver driver2 = new Driver("Driver", "Two", 2L);
-        Staff staff1 = new Staff("Staff", "One", 3L);
-        Staff staff2 = new Staff("Staff", "Two", 4L);
+        Driver driver1 = new Driver("Driver", "One");
+        Driver driver2 = new Driver("Driver", "Two");
+        Staff staff1 = new Staff("Staff", "One");
+        Staff staff2 = new Staff("Staff", "Two");
 
         LocalDateTime now = LocalDateTime.now();
 
-        Vehicle car = new Car(10L, driver1,staff1,"AAA-0000", 2.0, now);
-        Vehicle moto = new Motorcycle(20L, driver2, staff2, "ZZZ-9999", 1.0, now);
+        Vehicle car = new Car(driver1,staff1,"AAA-0000", 2.0, now);
+        Vehicle moto = new Motorcycle(driver2, staff2, "ZZZ-9999", 1.0, now);
 
         dao.insertVehicle(car);
         dao.insertVehicle(moto);
@@ -58,15 +57,15 @@ public class GarageDaoImplTest {
     */
     @Test
     public void testRemoveVehicle() {
-        Driver driver1 = new Driver("Driver", "One", 1L);
-        Driver driver2 = new Driver("Driver", "Two", 2L);
-        Staff staff1 = new Staff("Staff", "One", 3L);
-        Staff staff2 = new Staff("Staff", "Two", 4L);
+        Driver driver1 = new Driver("Driver", "One");
+        Driver driver2 = new Driver("Driver", "Two");
+        Staff staff1 = new Staff("Staff", "One");
+        Staff staff2 = new Staff("Staff", "Two");
 
         LocalDateTime now = LocalDateTime.now();
 
-        Vehicle car = new Car(10L, driver1,staff1,"AAA-0000", 2.0, now);
-        Vehicle moto = new Motorcycle(20L, driver2, staff2, "ZZZ-9999", 1.0, now);
+        Vehicle car = new Car(driver1,staff1,"AAA-0000", 2.0, now);
+        Vehicle moto = new Motorcycle(driver2, staff2, "ZZZ-9999", 1.0, now);
 
         dao.insertVehicle(car);
         dao.insertVehicle(moto);
@@ -91,15 +90,15 @@ public class GarageDaoImplTest {
     */
     @Test
     public void testFindVehicleByPlateNumber() {
-        Driver driver1 = new Driver("Driver", "One", 1L);
-        Driver driver2 = new Driver("Driver", "Two", 2L);
-        Staff staff1 = new Staff("Staff", "One", 3L);
-        Staff staff2 = new Staff("Staff", "Two", 4L);
+        Driver driver1 = new Driver("Driver", "One");
+        Driver driver2 = new Driver("Driver", "Two");
+        Staff staff1 = new Staff("Staff", "One");
+        Staff staff2 = new Staff("Staff", "Two");
 
         LocalDateTime now = LocalDateTime.now();
 
-        Vehicle car = new Car(10L, driver1,staff1,"AAA-0000", 2.0, now);
-        Vehicle moto = new Motorcycle(20L, driver2, staff2, "ZZZ-9999", 1.0, now);
+        Vehicle car = new Car(driver1,staff1,"AAA-0000", 2.0, now);
+        Vehicle moto = new Motorcycle(driver2, staff2, "ZZZ-9999", 1.0, now);
 
         dao.insertVehicle(car);
         dao.insertVehicle(moto);
@@ -131,9 +130,9 @@ public class GarageDaoImplTest {
     public void testGetVacantSpotsNumber() {
         Assertions.assertEquals(200, dao.getVacantSpotsNumber()); // Hard-coded garage size
 
-        Driver driver1 = new Driver("Driver", "One", 1L);
-        Staff staff1 = new Staff("Staff", "One", 3L);
-        Vehicle car = new Car(10L, driver1,staff1,"AAA-0000", 2.0, LocalDateTime.now());
+        Driver driver1 = new Driver("Driver", "One");
+        Staff staff1 = new Staff("Staff", "One");
+        Vehicle car = new Car(driver1,staff1,"AAA-0000", 2.0, LocalDateTime.now());
 
         dao.insertVehicle(car);
 
@@ -147,7 +146,7 @@ public class GarageDaoImplTest {
      */
     @Test
     public void testAddDriver()  {
-        Driver driver = new Driver("Driver", "One", 1L);
+        Driver driver = new Driver("Driver", "One");
 
         dao.addDriver(driver);
 
@@ -155,8 +154,7 @@ public class GarageDaoImplTest {
         Assertions.assertEquals(1, dao.getDrivers().size());
         Assertions.assertTrue(dao.getDrivers().stream()
                 .anyMatch(item -> item.getFirstName().equals(driver.getFirstName()) &&
-                        item.getLastName().equals(driver.getLastName()) &&
-                        item.getId().equals(driver.getId())));
+                        item.getLastName().equals(driver.getLastName())));
     }
 
     /**
@@ -166,7 +164,7 @@ public class GarageDaoImplTest {
      */
     @Test
     public void testRemoveDriver()  {
-        Driver driver = new Driver("Driver", "One", 1L);
+        Driver driver = new Driver("Driver", "One");
         dao.getDrivers().add(driver);
 
         Assertions.assertFalse(dao.getDrivers().isEmpty());
@@ -176,7 +174,6 @@ public class GarageDaoImplTest {
         Assertions.assertTrue(dao.getDrivers().isEmpty());
         Assertions.assertTrue(dao.getDrivers().stream()
                 .noneMatch(item -> item.getFirstName().equals(driver.getFirstName()) &&
-                        item.getLastName().equals(driver.getLastName()) &&
-                        item.getId().equals(driver.getId())));
+                        item.getLastName().equals(driver.getLastName())));
     }
 } 

@@ -10,7 +10,7 @@ public interface IGarageService {
 
     Double exitsGarage(String plateNum) throws InvalidPlateNumberException, PlateNumNotFoundException;
 
-    int getEmptySpotsNumber();
+    int getEmptySpotsNumber() throws GarageFullException;
 
     Double getTotalMoneyEarned();
 
