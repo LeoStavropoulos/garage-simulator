@@ -10,6 +10,10 @@ public class MotorcycleDto extends VehicleDto{
         super(driver, staff, plateNum, charge, entranceDateTime);
     }
 
+    public MotorcycleDto(DriverDto driver, StaffDto staff, String plateNum) {
+        super(driver, staff, plateNum);
+    }
+
     @Override
     public String toString() {
         return "Motorcycle{" +

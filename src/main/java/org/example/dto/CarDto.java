@@ -7,6 +7,10 @@ public class CarDto extends VehicleDto{
         super(driver, staff, plateNum, charge, entranceDateTime);
     }
 
+    public CarDto(DriverDto driver, StaffDto staff, String plateNum) {
+        super(driver, staff, plateNum);
+    }
+
     @Override
     public String toString() {
         return "Car{" +

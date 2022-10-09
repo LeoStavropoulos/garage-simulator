@@ -21,6 +21,12 @@ public abstract class VehicleDto {
         this.entranceDateTime = entranceDateTime;
     }
 
+    protected VehicleDto(DriverDto driver, StaffDto staff, String plateNum) {
+        this.driver = driver;
+        this.staff = staff;
+        this.plateNum = plateNum;
+    }
+
     public DriverDto getDriver() {
         return driver;
     }
