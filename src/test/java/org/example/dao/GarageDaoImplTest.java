@@ -1,5 +1,6 @@
 package org.example.dao;
 
+import org.example.exception.GarageFullException;
 import org.example.model.*;
 import org.junit.jupiter.api.*;
 
@@ -127,7 +128,7 @@ public class GarageDaoImplTest {
     *
     */
     @Test
-    public void testGetVacantSpotsNumber() {
+    public void testGetVacantSpotsNumber() throws GarageFullException {
         Assertions.assertEquals(200, dao.getVacantSpotsNumber()); // Hard-coded garage size
 
         Driver driver1 = new Driver("Driver", "One");
