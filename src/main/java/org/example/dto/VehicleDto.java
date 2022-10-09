@@ -2,7 +2,7 @@ package org.example.dto;
 
 import java.time.LocalDateTime;
 
-public abstract class VehicleDto extends AbstractDto{
+public abstract class VehicleDto {
     private DriverDto driver;
 
     private StaffDto staff;
@@ -13,8 +13,7 @@ public abstract class VehicleDto extends AbstractDto{
 
     private LocalDateTime entranceDateTime;
 
-    protected VehicleDto(Long id, DriverDto driver, StaffDto staff, String plateNum, Double charge, LocalDateTime entranceDateTime) {
-        this.setId(id);
+    protected VehicleDto(DriverDto driver, StaffDto staff, String plateNum, Double charge, LocalDateTime entranceDateTime) {
         this.driver = driver;
         this.staff = staff;
         this.plateNum = plateNum;

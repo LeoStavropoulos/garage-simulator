@@ -3,7 +3,7 @@ package org.example.model;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public abstract class Vehicle extends AbstractEntity{
+public abstract class Vehicle {
 
     private Driver driver;
 
@@ -15,8 +15,7 @@ public abstract class Vehicle extends AbstractEntity{
 
     private LocalDateTime entranceDateTime;
 
-    protected Vehicle(Long id, Driver driver, Staff staff, String plateNum, Double charge, LocalDateTime entranceDateTime) {
-        this.setId(id);
+    protected Vehicle(Driver driver, Staff staff, String plateNum, Double charge, LocalDateTime entranceDateTime) {
         this.driver = driver;
         this.staff = staff;
         this.plateNum = plateNum;

@@ -2,14 +2,13 @@ package org.example.model;
 
 import java.util.Objects;
 
-public abstract class Person extends AbstractEntity{
+public abstract class Person {
     private String firstName;
     private String lastName;
 
-    protected Person(String firstName, String lastName, Long id) {
+    protected Person(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.setId(id);
     }
 
     public String getFirstName() {

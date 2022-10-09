@@ -1,14 +1,13 @@
 package org.example.dto;
 
-public abstract class PersonDto extends AbstractDto {
+public abstract class PersonDto {
 
     private String firstName;
     private String lastName;
 
-    protected PersonDto(String firstName, String lastName, Long id) {
+    protected PersonDto(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.setId(id);
     }
 
     public String getFirstName() {

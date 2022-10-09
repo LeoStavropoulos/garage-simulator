@@ -21,7 +21,7 @@ public class ModelToDtoConverter {
             return null;
         }
 
-        return new DriverDto(model.getFirstName(), model.getLastName(), model.getId());
+        return new DriverDto(model.getFirstName(), model.getLastName());
     }
 
     public static StaffDto toDto(Staff model) {
@@ -29,7 +29,7 @@ public class ModelToDtoConverter {
             return null;
         }
 
-        return new StaffDto(model.getFirstName(), model.getLastName(), model.getId());
+        return new StaffDto(model.getFirstName(), model.getLastName());
     }
 
     public static CarDto toDto(Car model) {
@@ -37,7 +37,7 @@ public class ModelToDtoConverter {
             return null;
         }
 
-        return new CarDto(model.getId(), toDto(model.getDriver()), toDto(model.getStaff()), model.getPlateNum(), model.getCharge(), model.getEntranceDateTime());
+        return new CarDto(toDto(model.getDriver()), toDto(model.getStaff()), model.getPlateNum(), model.getCharge(), model.getEntranceDateTime());
     }
 
     public static MotorcycleDto toDto(Motorcycle model) {
@@ -45,6 +45,6 @@ public class ModelToDtoConverter {
             return null;
         }
 
-        return new MotorcycleDto(model.getId(), toDto(model.getDriver()), toDto(model.getStaff()), model.getPlateNum(), model.getCharge(), model.getEntranceDateTime());
+        return new MotorcycleDto(toDto(model.getDriver()), toDto(model.getStaff()), model.getPlateNum(), model.getCharge(), model.getEntranceDateTime());
     }
 }
