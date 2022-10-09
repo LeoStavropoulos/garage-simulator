@@ -14,7 +14,9 @@ public interface IGarageDao {
 
     Vehicle findVehicleByPlateNumber(String plateNum);
 
-    public Map<String, Vehicle> getGarage();
+    Boolean findIfDriverExists(Driver driver);
+
+    Map<String, Vehicle> getGarage();
 
     void addMoney(Double amount);
 
