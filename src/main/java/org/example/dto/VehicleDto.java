@@ -1,6 +1,7 @@
 package org.example.dto;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public abstract class VehicleDto {
     private DriverDto driver;
@@ -21,7 +22,7 @@ public abstract class VehicleDto {
         this.entranceDateTime = entranceDateTime;
     }
 
-    protected VehicleDto(DriverDto driver, StaffDto staff, String plateNum) {
+    public VehicleDto(DriverDto driver, StaffDto staff, String plateNum) {
         this.driver = driver;
         this.staff = staff;
         this.plateNum = plateNum;
@@ -65,5 +66,18 @@ public abstract class VehicleDto {
 
     public void setEntranceDateTime(LocalDateTime entranceDateTime) {
         this.entranceDateTime = entranceDateTime;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        VehicleDto that = (VehicleDto) o;
+        return getPlateNum().equals(that.getPlateNum());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getPlateNum());
     }
 }

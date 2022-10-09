@@ -1,5 +1,7 @@
 package org.example.dto;
 
+import java.util.Objects;
+
 public abstract class PersonDto {
 
     private String firstName;
@@ -24,5 +26,18 @@ public abstract class PersonDto {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PersonDto personDto = (PersonDto) o;
+        return getFirstName().equals(personDto.getFirstName()) && getLastName().equals(personDto.getLastName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getFirstName(), getLastName());
     }
 }

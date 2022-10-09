@@ -31,23 +31,9 @@ public class DtoToModelConverter {
             return null;
         }
 
-        return new Vehicle(toModel(dto.getDriver()), toModel(dto.getStaff()), dto.getPlateNum(), dto.getCharge(), dto.getEntranceDateTime()) {
-        };
-    }
+        return (dto instanceof CarDto) ?
+                new Car(toModel(dto.getDriver()), toModel(dto.getStaff()), dto.getPlateNum(), dto.getCharge(), dto.getEntranceDateTime()):
+                new Motorcycle(toModel(dto.getDriver()), toModel(dto.getStaff()), dto.getPlateNum(), dto.getCharge(), dto.getEntranceDateTime());
 
-    public static Car toModel(CarDto dto) {
-        if (dto == null) {
-            return null;
-        }
-
-        return new Car(toModel(dto.getDriver()), toModel(dto.getStaff()), dto.getPlateNum(), dto.getCharge(), dto.getEntranceDateTime());
-    }
-
-    public static Motorcycle toModel(MotorcycleDto dto) {
-        if (dto == null) {
-            return null;
-        }
-
-        return new Motorcycle(toModel(dto.getDriver()), toModel(dto.getStaff()), dto.getPlateNum(), dto.getCharge(), dto.getEntranceDateTime());
     }
 }
