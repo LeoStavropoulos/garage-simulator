@@ -1,14 +1,11 @@
 package org.example.dto;
 
-import org.example.model.Driver;
-import org.example.model.Staff;
-
 import java.time.LocalDateTime;
 
 public abstract class VehicleDto extends AbstractDto{
-    private Driver driver;
+    private DriverDto driver;
 
-    private Staff staff;
+    private StaffDto staff;
 
     private String plateNum;
 
@@ -16,7 +13,7 @@ public abstract class VehicleDto extends AbstractDto{
 
     private LocalDateTime entranceDateTime;
 
-    protected VehicleDto(Long id, Driver driver, Staff staff, String plateNum, Double charge, LocalDateTime entranceDateTime) {
+    protected VehicleDto(Long id, DriverDto driver, StaffDto staff, String plateNum, Double charge, LocalDateTime entranceDateTime) {
         this.setId(id);
         this.driver = driver;
         this.staff = staff;
@@ -25,19 +22,19 @@ public abstract class VehicleDto extends AbstractDto{
         this.entranceDateTime = entranceDateTime;
     }
 
-    public Driver getDriver() {
+    public DriverDto getDriver() {
         return driver;
     }
 
-    public void setDriver(Driver driver) {
+    public void setDriver(DriverDto driver) {
         this.driver = driver;
     }
 
-    public Staff getStaff() {
+    public StaffDto getStaff() {
         return staff;
     }
 
-    public void setStaff(Staff staff) {
+    public void setStaff(StaffDto staff) {
         this.staff = staff;
     }
 

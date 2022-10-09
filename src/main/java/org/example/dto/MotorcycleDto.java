@@ -6,7 +6,7 @@ import org.example.model.Staff;
 import java.time.LocalDateTime;
 
 public class MotorcycleDto extends VehicleDto{
-    protected MotorcycleDto(Long id, Driver driver, Staff staff, String plateNum, Double charge, LocalDateTime entranceDateTime) {
+    public MotorcycleDto(Long id, DriverDto driver, StaffDto staff, String plateNum, Double charge, LocalDateTime entranceDateTime) {
         super(id, driver, staff, plateNum, charge, entranceDateTime);
     }
 
