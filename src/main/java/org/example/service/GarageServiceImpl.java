@@ -12,7 +12,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 
 public class GarageServiceImpl implements IGarageService{
-    private static final GarageDaoImpl dao = GarageDaoImpl.getInstance();
+    GarageDaoImpl dao = GarageDaoImpl.getInstance();
     private static final Double CAR_CHARGE = 2.0;
     private static final Double MOTO_CHARGE = 1.0;
 
@@ -54,16 +54,17 @@ public class GarageServiceImpl implements IGarageService{
         if (time < 31L) {
             price = 0.0;
         } else {
-            price = time * vehicle.getCharge();
+            price = time * vehicle.getCharge() / 60;
         }
 
+        dao.removeVehicle(plateNum);
+
         if (Boolean.FALSE.equals(dao.findIfDriverExists(driver))) {
-            dao.removeDriver(dao.findVehicleByPlateNumber(plateNum).getDriver());
+            dao.removeDriver(driver);
         } else {
             price *= 0.7;
         }
 
-        dao.removeVehicle(plateNum);
 
         dao.addMoney(price);
         return price;
