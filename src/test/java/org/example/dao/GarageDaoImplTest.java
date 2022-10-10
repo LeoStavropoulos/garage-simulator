@@ -7,7 +7,7 @@ import org.junit.jupiter.api.*;
 import java.time.LocalDateTime;
 
 
-public class GarageDaoImplTest {
+class GarageDaoImplTest {
 
     GarageDaoImpl dao;
 
@@ -22,7 +22,7 @@ public class GarageDaoImplTest {
     *
     */
     @Test
-    public void testInsertVehicle()  {
+    void testInsertVehicle()  {
         Driver driver1 = new Driver("Driver", "One");
         Driver driver2 = new Driver("Driver", "Two");
         Staff staff1 = new Staff("Staff", "One");
@@ -57,7 +57,7 @@ public class GarageDaoImplTest {
     *
     */
     @Test
-    public void testRemoveVehicle() {
+    void testRemoveVehicle() {
         Driver driver1 = new Driver("Driver", "One");
         Driver driver2 = new Driver("Driver", "Two");
         Staff staff1 = new Staff("Staff", "One");
@@ -90,7 +90,7 @@ public class GarageDaoImplTest {
     *
     */
     @Test
-    public void testFindVehicleByPlateNumber() {
+    void testFindVehicleByPlateNumber() {
         Driver driver1 = new Driver("Driver", "One");
         Driver driver2 = new Driver("Driver", "Two");
         Staff staff1 = new Staff("Staff", "One");
@@ -114,7 +114,7 @@ public class GarageDaoImplTest {
     *
     */
     @Test
-    public void testAddMoneyAndGetTotalMoneyEarned() {
+    void testAddMoneyAndGetTotalMoneyEarned() {
         Double amount = 100.0;
 
         dao.addMoney(amount);
@@ -128,7 +128,7 @@ public class GarageDaoImplTest {
     *
     */
     @Test
-    public void testGetVacantSpotsNumber() throws GarageFullException {
+    void testGetVacantSpotsNumber() throws GarageFullException {
         Assertions.assertEquals(200, dao.getVacantSpotsNumber()); // Hard-coded garage size
 
         Driver driver1 = new Driver("Driver", "One");
@@ -146,7 +146,7 @@ public class GarageDaoImplTest {
      *
      */
     @Test
-    public void testAddDriver()  {
+    void testAddDriver()  {
         Driver driver = new Driver("Driver", "One");
 
         dao.addDriver(driver);
@@ -164,7 +164,7 @@ public class GarageDaoImplTest {
      *
      */
     @Test
-    public void testRemoveDriver()  {
+    void testRemoveDriver()  {
         Driver driver = new Driver("Driver", "One");
         dao.getDrivers().add(driver);
 
@@ -177,4 +177,12 @@ public class GarageDaoImplTest {
                 .noneMatch(item -> item.getFirstName().equals(driver.getFirstName()) &&
                         item.getLastName().equals(driver.getLastName())));
     }
-} 
+
+    @Test
+    void findIfDriverExists() {
+        Driver driver = new Driver("Driver", "One");
+        dao.addDriver(driver);
+
+        Assertions.assertTrue(dao.findIfDriverExists(driver));
+    }
+}

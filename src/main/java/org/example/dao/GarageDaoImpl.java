@@ -45,7 +45,7 @@ public class GarageDaoImpl implements IGarageDao{
     public Boolean findIfDriverExists(Driver driver) {
         for (Map.Entry<String, Vehicle> entry : garage.entrySet()) {
             Vehicle v = entry.getValue();
-            if (v.getDriver() == driver) return true;
+            if (v.getDriver().equals(driver)) return true;
         }
         return false;
     }
